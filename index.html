@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sarath Satheesh | Mechatronics & Robotics</title>
+<meta name="description" content="Portfolio of Sarath Satheesh, M.Eng. candidate in Mechatronics and Cyber-Physical Systems at TH Deggendorf. Projects in VR simulation, additive manufacturing, sensors and automation.">
+<meta name="theme-color" content="#16324f">
+<style>
+  :root {
+    --bg: #f6f7f9;
+    --surface: #ffffff;
+    --text: #1d2733;
+    --muted: #5b6776;
+    --line: #dde2e8;
+    --navy: #16324f;
+    --blue: #2f6db5;
+    --tag-bg: #e8eff7;
+    --tag-text: #1f4e85;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f151c;
+      --surface: #171f29;
+      --text: #e6ebf1;
+      --muted: #9aa7b6;
+      --line: #263241;
+      --navy: #8db4e2;
+      --blue: #7aaee8;
+      --tag-bg: #1e2c3d;
+      --tag-text: #a9c8ee;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 70px; }
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-text-size-adjust: 100%;
+  }
+  a { color: var(--blue); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 920px; margin: 0 auto; padding: 0 22px; }
+
+  /* top bar */
+  header.bar {
+    position: sticky; top: 0; z-index: 10;
+    background: var(--surface);
+    border-bottom: 1px solid var(--line);
+  }
+  header.bar .wrap {
+    display: flex; align-items: center; justify-content: space-between;
+    height: 56px;
+  }
+  .brand { font-weight: 700; letter-spacing: .04em; color: var(--navy); }
+  nav a { margin-left: 18px; font-size: .92rem; color: var(--muted); }
+  nav a:hover { color: var(--blue); text-decoration: none; }
+  @media (max-width: 520px) {
+    .brand { white-space: nowrap; font-size: .8rem; }
+    nav a { margin-left: 10px; font-size: .8rem; }
+  }
+
+  /* hero */
+  .hero { padding: 72px 0 48px; }
+  .hero h1 {
+    margin: 0 0 6px;
+    font-size: clamp(2rem, 5vw, 2.9rem);
+    color: var(--navy);
+    letter-spacing: .01em;
+    line-height: 1.15;
+  }
+  .hero .role { margin: 0 0 18px; font-size: 1.15rem; color: var(--blue); font-weight: 600; }
+  .hero p.lead { max-width: 640px; margin: 0 0 24px; color: var(--muted); font-size: 1.05rem; }
+  .status {
+    display: inline-block; margin-bottom: 26px; padding: 6px 12px;
+    background: var(--tag-bg); color: var(--tag-text);
+    border-radius: 999px; font-size: .88rem; font-weight: 600;
+  }
+  .btns { display: flex; flex-wrap: wrap; gap: 10px; }
+  .btn {
+    display: inline-block; padding: 10px 18px; border-radius: 8px;
+    border: 1px solid var(--navy); font-weight: 600; font-size: .95rem;
+  }
+  .btn.primary { background: var(--navy); color: var(--bg); }
+  .btn.primary:hover { opacity: .9; text-decoration: none; }
+  .btn.ghost { color: var(--navy); background: transparent; }
+  .btn.ghost:hover { background: var(--tag-bg); text-decoration: none; }
+
+  /* sections */
+  section { padding: 44px 0; border-top: 1px solid var(--line); }
+  h2 {
+    margin: 0 0 24px; font-size: 1.05rem; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--navy);
+  }
+
+  /* project cards */
+  .grid { display: grid; gap: 20px; grid-template-columns: 1fr; }
+  @media (min-width: 760px) { .grid { grid-template-columns: 1fr 1fr; } }
+  .card {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 12px; overflow: hidden; display: flex; flex-direction: column;
+  }
+  .card .visual {
+    height: 150px; display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(135deg, var(--navy), var(--blue));
+    color: #fff; font-weight: 700; letter-spacing: .06em; font-size: .85rem;
+    text-transform: uppercase; opacity: .92;
+  }
+  .card .visual img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .card .body { padding: 20px 20px 22px; display: flex; flex-direction: column; flex: 1; }
+  .card h3 { margin: 0 0 4px; font-size: 1.1rem; color: var(--text); }
+  .meta { margin: 0 0 12px; font-size: .85rem; color: var(--muted); }
+  .card p { margin: 0 0 10px; font-size: .96rem; }
+  .card .mine { color: var(--text); }
+  .card .mine strong { color: var(--navy); }
+  .tags { margin-top: auto; padding-top: 8px; display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag {
+    font-size: .78rem; padding: 3px 10px; border-radius: 999px;
+    background: var(--tag-bg); color: var(--tag-text); font-weight: 600;
+  }
+
+  /* experience / education rows */
+  .row { display: grid; gap: 4px 20px; margin-bottom: 26px; grid-template-columns: 1fr; }
+  @media (min-width: 760px) { .row { grid-template-columns: 170px 1fr; } }
+  .row .when { color: var(--muted); font-size: .92rem; }
+  .row h3 { margin: 0; font-size: 1.05rem; }
+  .row .where { margin: 0 0 8px; color: var(--muted); font-size: .92rem; }
+  .row ul { margin: 0; padding-left: 20px; }
+  .row li { margin-bottom: 4px; }
+
+  /* skills */
+  .skills { display: grid; gap: 16px; grid-template-columns: 1fr; }
+  @media (min-width: 760px) { .skills { grid-template-columns: 1fr 1fr; } }
+  .skill-box { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; }
+  .skill-box h3 { margin: 0 0 10px; font-size: .95rem; color: var(--navy); }
+  .skill-box .tags { padding-top: 0; }
+  .note { margin-top: 16px; color: var(--muted); font-size: .92rem; }
+
+  /* contact */
+  .contact p { margin: 0 0 14px; max-width: 560px; color: var(--muted); }
+  footer { padding: 28px 0 40px; border-top: 1px solid var(--line); color: var(--muted); font-size: .85rem; }
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap">
+    <span class="brand">SARATH SATHEESH</span>
+    <nav>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <!-- HERO -->
+    <div class="hero">
+      <h1>Sarath Satheesh</h1>
+      <p class="role">M.Eng. candidate, Mechatronics &amp; Robotics</p>
+      <p class="lead">
+        Final-semester Master's student in Mechatronics and Cyber-Physical Systems at TH Deggendorf.
+        My projects cover VR simulation, additive manufacturing, sensors and automation.
+      </p>
+      <span class="status">Looking for a thesis, internship or working-student role &middot; available now &middot; open to relocating within Germany</span>
+      <div class="btns">
+        <a class="btn primary" href="Sarath_Satheesh_CV_Web.pdf">Download CV (PDF)</a>
+        <a class="btn ghost" href="mailto:sarathsatheesh112@gmail.com">Email me</a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/sarathsatheesh31" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn ghost" href="https://github.com/sarath-satheesh" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="grid">
+
+        <article class="card">
+          <div class="visual">
+            <!-- To add a screenshot: save it as images/vr-simulator.jpg in this repository,
+                 then delete the text below and use:  <img src="images/vr-simulator.jpg" alt="VR driving simulator"> -->
+            VR driving simulator
+          </div>
+          <div class="body">
+            <h3>Driver Perspective Simulator: Active Safety in VR</h3>
+            <p class="meta">TH Deggendorf &middot; Master's case study, 2025 &middot; team project</p>
+            <p>
+              A Unity-based VR driving simulator that puts the user in the driver's seat during
+              Euro NCAP pedestrian scenarios, including automatic emergency braking (AEB). The goal was to
+              study how a person perceives and reacts to an automated safety system in a critical moment.
+            </p>
+            <p class="mine"><strong>My part:</strong> scenario logic, vehicle motion and trajectories, and
+              integrating the VR hardware, simulation and safety-system logic. I also ran the scenarios and analysed the performance data.</p>
+            <div class="tags"><span class="tag">Unity</span><span class="tag">VR</span><span class="tag">Euro NCAP</span><span class="tag">Human-machine interaction</span></div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="visual">
+            <!-- To add a photo: save it as images/gears.jpg, then replace the text below with:
+                 <img src="images/gears.jpg" alt="3D-printed profile-shifted gears"> -->
+            Profile-shifted gears
+          </div>
+          <div class="body">
+            <h3>Involute Gear: Effect of Profile Shift</h3>
+            <p class="meta">TH Deggendorf &middot; Additive Manufacturing case study, 2024 &middot; team project</p>
+            <p>
+              A parametric involute gear generator written in IceSL (Lua), with profile shift and fillet radius as inputs.
+              The demonstration model combines gears with different profile shifts, shaft pins, a handle and a base,
+              and was 3D-printed with FFF using design-for-additive-manufacturing rules.
+            </p>
+            <p class="mine"><strong>My part:</strong> parametric modelling in IceSL/Lua, 3D printing, and evaluating how profile shift and print parameters affected accuracy and mechanical behaviour.</p>
+            <div class="tags"><span class="tag">IceSL / Lua</span><span class="tag">FFF 3D printing</span><span class="tag">DfAM</span></div>
+            <!-- When your gear repository is public, add a link here:
+                 <p><a href="https://github.com/sarath-satheesh/involute-gear-profile-shift">View the code on GitHub</a></p> -->
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="visual">Capacitive sensor</div>
+          <div class="body">
+            <h3>Capacitive Fuel Level Sensor</h3>
+            <p class="meta">Bachelor's project &middot; concept study</p>
+            <p>
+              A concept for a capacitive fuel-level sensor with Bluetooth / IoT readout. The project covered the working
+              principle, the sensing and readout electronics, and the data path for remote monitoring, presented at concept level.
+            </p>
+            <div class="tags"><span class="tag">Sensors</span><span class="tag">Embedded</span><span class="tag">Bluetooth / IoT</span></div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="visual">Heat exchanger</div>
+          <div class="body">
+            <h3>Heat Transfer Enhancement in a Double Pipe Heat Exchanger</h3>
+            <p class="meta">Bachelor's project</p>
+            <p>
+              Experiments designed to show which design changes actually improved heat transfer,
+              with analysis of the measured thermal performance data.
+            </p>
+            <div class="tags"><span class="tag">Experiments</span><span class="tag">Thermal analysis</span><span class="tag">Data analysis</span></div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- EXPERIENCE + EDUCATION -->
+    <section id="experience">
+      <h2>Experience</h2>
+
+      <div class="row">
+        <div class="when">Jul 2022 &ndash; Aug 2023</div>
+        <div>
+          <h3>Junior Automation Engineer</h3>
+          <p class="where">Logix Space, Pandalam, India</p>
+          <ul>
+            <li>Supported the team on mechatronic prototypes and proof-of-concept automation setups, helping with assembly and setup.</li>
+            <li>Assisted with sensor and actuator integration, calibration and testing, and observed commissioning on the workshop floor.</li>
+            <li>Helped troubleshoot hardware and sensor faults and kept testing records and technical documentation.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="when">2023 &ndash; present</div>
+        <div>
+          <h3>Crew Member (part-time)</h3>
+          <p class="where">McDonald's, Regensburg</p>
+          <ul><li>Working alongside my studies in a fast-paced team, and using my German every day.</li></ul>
+        </div>
+      </div>
+
+      <h2 style="margin-top:36px;">Education</h2>
+
+      <div class="row">
+        <div class="when">Oct 2023 &ndash; present</div>
+        <div>
+          <h3>M.Eng. Mechatronics and Cyber-Physical Systems</h3>
+          <p class="where">TH Deggendorf, Germany</p>
+          <p style="margin:0;">All coursework complete; thesis and seminar outstanding. Key modules: Advanced Robotics, Autonomous Systems, Cyber-Physical Systems, Additive Manufacturing, Human-Machine Interaction.</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="when">Jun 2018 &ndash; Jun 2022</div>
+        <div>
+          <h3>B.Tech. Mechanical Engineering</h3>
+          <p class="where">APJ Abdul Kalam Technological University, Kerala, India</p>
+          <p style="margin:0;">Key modules: CAD &amp; CAE, Material Science, Manufacturing Technology, Fluid &amp; Thermal Engineering.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="skills">
+        <div class="skill-box">
+          <h3>Programming</h3>
+          <div class="tags"><span class="tag">Python</span><span class="tag">C++</span><span class="tag">Lua</span><span class="tag">Git</span><span class="tag">Linux</span></div>
+        </div>
+        <div class="skill-box">
+          <h3>Simulation &amp; robotics</h3>
+          <div class="tags"><span class="tag">Unity</span><span class="tag">MATLAB &amp; Simulink</span><span class="tag">MuJoCo (basic)</span><span class="tag">ROS 2 (learning)</span></div>
+        </div>
+        <div class="skill-box">
+          <h3>Design &amp; manufacturing</h3>
+          <div class="tags"><span class="tag">SolidWorks</span><span class="tag">AutoCAD</span><span class="tag">IceSL</span><span class="tag">FFF 3D printing</span><span class="tag">DfAM</span></div>
+        </div>
+        <div class="skill-box">
+          <h3>Languages</h3>
+          <div class="tags"><span class="tag">English: professional</span><span class="tag">German: A2, improving</span><span class="tag">Malayalam: native</span></div>
+        </div>
+      </div>
+      <p class="note">Certificates: Tele-Robotics (vhb), MATLAB Onramp (MathWorks), ROS: Hello (Real) World (edX), AutoCAD 2D &amp; 3D. Currently working through a ROS 2 course on Udemy.</p>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact">
+      <h2>Contact</h2>
+      <p>I'm looking for a Master's thesis, internship or working-student role in robotics, mechatronics or automation. The best way to reach me is by email.</p>
+      <div class="btns">
+        <a class="btn primary" href="mailto:sarathsatheesh112@gmail.com">sarathsatheesh112@gmail.com</a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/sarathsatheesh31" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn ghost" href="Sarath_Satheesh_CV_Web.pdf">CV (PDF)</a>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">&copy; 2026 Sarath Satheesh &middot; Regensburg, Germany</div>
+</footer>
+
+</body>
+</html>
